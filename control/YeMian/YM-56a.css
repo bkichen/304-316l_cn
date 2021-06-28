@@ -1,0 +1,135 @@
+input[type="submit"], input[type="reset"], input[type="button"], button { -webkit-appearance: none; /*去掉苹果的默认UI来渲染按钮*/}
+html,body,form{ margin:0; padding:0; font-size:12px; text-decoration:none; height:100%;font-family: 微软雅黑,'microsoft yahei',宋体,新宋体,sans-serif; font-size:14px; background:#FFF;}
+table{}
+
+body{overflow-x: hidden;transition:.5s;}
+a{ color:currentColor;text-decoration:none;border:0}
+img{ border:0}
+.WenBen{min-width: 20px; height: auto; font-size: 16px; color: #666;  position:absolute; }
+*{box-sizing: border-box;}
+p{margin:0; padding:0}
+.jsPaiBanTongLan{ z-index:1;} 
+.Daohang{display: flex; align-items: center; position: relative; z-index:2;flex-wrap: wrap; display:-webkit-box;display:-webkit-flex;display:-ms-flexbox; }
+.jsHoverFlex{ /*flex:1;*/position: relative;}
+.jsHoverFlex a{ display:inline-block;color: inherit;  width:100%}
+
+.jsHoverFlex1{position:absolute;background: #FFF;width:100%;display:none}
+.jsHoverFlex .jsHoverFlex1 a{ text-overflow: ellipsis;overflow: hidden; white-space: nowrap;}
+.jsHFYesShow .jsHoverFlex1{ display:block}
+.jsHFYesShow .jsHoverFlex1 .jsHoverFlex1{display:none}
+.jsHFYesShow .jsHFYesShow .jsHoverFlex1{ display:block}
+.jsHFYesShow .jsHoverFlex1 .jsHoverFlex1 .jsHoverFlex1{display:none}
+.jsHFYesShow .jsHFYesShow .jsHFYesShow .jsHoverFlex1{ display:block}
+
+
+.flex_jr{ /*safari*/display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;}
+.flex1_jr{ -webkit-box-flex: 1; /* OLD - iOS 6-, Safari 3.1-6 */  -moz-box-flex: 1;/* OLD - Firefox 19- */ -webkit-flex: 1;/* Chrome */ -ms-flex: 1;/* IE 10 */ flex: 1; }
+.zknowidth div{/*子框没有宽度*/white-space:nowrap !important;}
+.gundong{ width:100%; height:200px}
+
+.dpib .pa,.pa{position: absolute; }
+.pr{position:relative;}
+.pf{ position:fixed}
+
+.mLRauto{margin:0 auto;}
+.ofh{overflow: hidden;}
+.ofaa{overflow:auto; height:auto}
+.h100{ height:100%}
+.h100auto{ height:auto}
+.dpf{display:flex;}
+.fww{flex-wrap: wrap;}
+.minH24{ min-height:24px}
+.shenglue{display:-webkit-box!important;-webkit-box-orient: vertical;overflow: hidden;/*省略号*/}
+.block{ display:block!important; }
+.wsn{ white-space:nowrap;/*强制不换行*/}
+.wsi{white-space: initial;}
+
+.dpib{ display:inline-block}
+.dpnone{display:none!important;}
+.jsGunDongLB_showY{ display:none}
+.jsGunDongLB_show_Select>.jsGunDongLB_showY,.jsGunDongLB_show .jsGunDongLB_showY{ display:block !important}
+.jsGunDongLB_show_Select>.jsGunDongLB_showN,.jsGunDongLB_show .jsGunDongLB_showN{ display:none !important}
+/*.jsGunDongLB_show6 .jsGunDongLB_showY{ position:absolute;transition:.5s;}
+.jsGunDongLB_show6:hover .jsGunDongLB_showY{display:block !important}*/
+
+.jsGunDongLB_show4,.jsGunDongLB_show5,.jsGunDongLB_show6{ position:relative;}
+.jsGunDongLB_show4 .jsGunDongLB_showY,.jsGunDongLB_show5 .jsGunDongLB_showY{display:block!important; position:absolute;transition:.5s; } 
+.jsGunDongLB_show6 .jsGunDongLB_showY{display:block; position:absolute;transition:.5s; } 
+.up .jsGunDongLB_showY{ top:0;}
+.down .jsGunDongLB_showY{ bottom:0;}
+.left .jsGunDongLB_showY{ left:0; top:0}
+.right .jsGunDongLB_showY{right:0; top:0;}
+
+
+.pager{ width:100%; text-align:center; margin:8px auto 0; overflow:hidden;}
+.pager a{ display:inline-block; padding:0 5px; height:20px; background:#e9e9e9; overflow:hidden; line-height:20px; margin:0 5px; color:#ccc; border:solid 1px #ddd; font-family:"宋体";}
+.pager a:hover{ background:#fff;}
+.pager span{ font-weight:bold; color:#f70; display:inline-block; padding:0 5px; line-height:20px; height:20px; overflow:hidden; background:#fff; margin:0 5px; border:1px solid #ddd;}
+#wappanel .pager{ font-size:30px;}
+#wappanel .pager a,#wappanel .pager span{ padding:0 10px; height:40px;line-height:40px; margin:0 10px;}
+
+.pageLeft{ left:0; position:absolute}
+.pageRight{ right:0;position:absolute}
+
+.pager1{ text-align:center; color:#231816; margin-bottom:20px;width:100%; text-align:center;}
+.pager1 a,.pager1 span{ line-height:40px; border:1px solid #918b8b; width:140px; text-align:center; display:inline-block; text-align:center; margin:0 16px; font-size:20px;}
+.pager1 span{color: #ccc; border: 1px solid #ccc;}
+
+
+.YM透明层{background-color: rgba(0,0,0,.6); position:fixed; top:50%; left:50%; width:0; height:0; /*right:0; bottom:0;display:none;*/align-items:center; z-index:1;transition:.3s; overflow:hidden;} 
+.透明层显示内容{width:790px;min-height:300px; background:#FFF; margin: 0 auto; border-radius: 10px;  position:relative}
+.透明层关闭{background: #bbb; width: 30px;height: 30px;color: #FFF;border-radius: 50%;text-align: center;font-size: 18px; font-family: cursive;line-height: 30px; position:absolute; right:-15px; top:-15px; cursor:pointer}
+.jsWenGengDuoShow{ position:absolute; width:100%; bottom:0}
+.YMczpb{ width:100%; min-height:60px}
+
+.GDLB_addUD{   display: flex;flex-wrap: wrap; height:1px; width:100%}
+.GDLB_addLR{display: flex;flex-wrap: wrap;flex-direction:column; width:1px; height:100%}
+
+.imgCC{align-items: center; display: flex; justify-content: center;box-sizing: border-box; position:relative}
+.imgCC img{ max-width:100%; max-height:100%;/*padding:1px;*/}
+.jstlfd,.tlfd{ transition:.5s;}
+
+
+.zIA2{ z-index:2 !important}
+
+.pfzI19,.zI19,.pfzI18,.zI18,.pfzI17,.zI17,.pfzI16,.zI16,.pfzI15,.zI15,.pfzI14,.zI14,.pfzI13,.zI13,.pfzI12,.zI12,.pfzI11,.zI11,.pfzI10,.zI10,.pfzI9,.zI9,.pfzI8,.zI8,.pfzI7,.zI7,.pfzI6,.zI6,.pfzI5,.zI5,.pfzI4,.zI4,.pfzI3,.zI3,.pfzI2,.zI2,.pfzI1,.zI1,.pfzI0,.zI0,.pfzI,.zI{ z-index:1000!important;}
+
+
+#newkefu_right{ position:absolute;  height:auto; overflow:hidden; top:80px; right:0; z-index:99999;}
+.newkefu{ border:solid 0 #ccc; background:none transparent scroll repeat 0% 0%;}
+.kefu{ position:fixed; text-align:center; width:176px; overflow:hidden; top:80px; right:3px;}
+.newkefu_bar{ float:right; cursor:pointer;}
+.newkefu_group{ text-align:center; width:140px; float:right; height:auto; overflow:hidden;}
+.newkefu_group .shouqian_mid{ background:url(http://www.gdyushun.cn/index/images/style/kefu-middle.png) repeat-y; height:auto; overflow:hidden;}
+.newkefu_group .shouqian_mid .shouqian_top{ width:100%; background:url(http://www.gdyushun.cn/index/images/style/kefu-top.png) no-repeat; overflow:hidden;}
+.newkefu_group .shouqian_mid .midli_ul{ width:100%; margin:4px auto 0; overflow:hidden;padding: 0;}
+.newkefu_group .shouqian_mid .midli_ul li{ width:100%; line-height:24px; text-align:center; overflow:hidden;}
+.newkefu_group .shouqian_mid .midli_ul li a{ display:block;}
+.newkefu_group .shouqian_mid .midli_ul li img{ vertical-align:bottom;}
+.newkefu_group .shouqian_mid .midli_ul .midli_tt{ height:24px; color:#fff; font-size:15px; text-shadow:1px 2px 2px #444; background:url(http://www.gdyushun.cn/index/images/style/kefu-midtop.png) no-repeat; margin-bottom:12px;}
+.newkefu_group .shouqian_mid .midli_ul .midli_ct{ margin-bottom:10px;}
+.newkefu_group .shouqian_mid .midli_ul .midli_ct .kefu_wechat{ width:117px; margin:2px auto 0;}
+
+
+.dymk>div>.jsPaiBanTongLan{ width:1920px; margin-left:-960px; left:50%}
+
+.
+#indexpanel .noshow,#wappanel .noshow{ display:none; }
+
+
+.scroll::-webkit-scrollbar {/*滚动条整体样式*/
+        width: 10px;     /*高宽分别对应横竖滚动条的尺寸*/
+        height: 1px;
+    }
+.scroll::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+        border-radius: 10px;
+         -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        background: #535353;
+    }
+.scroll::-webkit-scrollbar-track {/*滚动条里面轨道*/
+        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        border-radius: 10px;
+        background: #EDEDED;
+    }
+ .byd_css{position:fixed; z-index:-1;}
+ .byd_css0{z-index:0}

